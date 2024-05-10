@@ -11,6 +11,7 @@ Each YAML file serves as a configuration file for dynamically generating a form 
  - Each column has a database identifier (e.g. battery_voltage), a label (e.g. Battery Voltage), and a type (e.g. DECIMAL).
  - The GUI shows the entry label with a field alongside for the user to fill in.
  - For the datetime type, the field is filled in with the current datetime.
+ - Use python logging to log errors and debug messages.
  - Use git to manage the project.
 
 # YAML File Structure:
@@ -111,12 +112,12 @@ Each dictionary in the `columns` list corresponds to a form field and contains t
 - [x] Write a description of the yaml file
 - [x] Write a description of the classes and interfaces.
 - [x] Create a bash script that generates the folder structure for the project, .gitignore, and empty python files.
-- [ ] Create the git repository and connect the project to git.
+- [x] Create the git repository and connect the project to git.
 - [ ] Fill in the python code for the classes and interfaces.
 - [ ] Write a requirements.txt file for all of the modules we will be requiring.
 - [ ] Write a readme.md that includes usage instructions.
 
-OK, so I have a folder with the folder structure and I want to add it to my git repository.
+The next task is to write app.py.  Give me the python for app.py.  Using logging to log errors and debug messages to the console.
 
 
 

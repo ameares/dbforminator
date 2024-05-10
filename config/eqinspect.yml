@@ -1,0 +1,29 @@
+form:
+  title: "Equipment Inspection Form"
+  columns:
+    - id: "equipment_id"
+      label: "Equipment ID"
+      type: "VARCHAR"
+      max_length: 50
+      placeholder: "Enter Equipment ID"
+
+    - id: "inspection_date"
+      label: "Inspection Date"
+      type: "DATETIME"
+      default: "now"
+
+    - id: "operational_status"
+      label: "Operational Status"
+      type: "BOOLEAN"
+      default: "true"
+
+    - id: "hours_used"
+      label: "Hours Used"
+      type: "INTEGER"
+      placeholder: "Enter total hours of usage"
+
+    - id: "battery_voltage"
+      label: "Battery Voltage"
+      type: "DECIMAL"
+      precision: 2
+      placeholder: "Enter voltage in volts"

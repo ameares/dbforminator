@@ -1,0 +1,26 @@
+form:
+  title: "Equipment Check-In Form"
+  columns:
+    - id: "equipment_id"
+      label: "Equipment ID"
+      type: "VARCHAR"
+      max_length: 255
+      placeholder: "Enter equipment ID"
+    - id: "manufacturer_date"
+      label: "Manufacturer Date"
+      type: "DATETIME"
+      default: "now"  # Automatically fills in the current date and time
+    - id: "unit_count"
+      label: "Unit Count"
+      type: "INTEGER"
+      placeholder: "Enter total units"
+    - id: "unit_price"
+      label: "Unit Price"
+      type: "DECIMAL"
+      placeholder: "Enter price per unit"
+      precision: 10
+      scale: 2
+    - id: "inspection_passed"
+      label: "Inspection Passed"
+      type: "BOOLEAN"
+      default: "false"  # Default unchecked

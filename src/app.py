@@ -16,7 +16,7 @@ class FormApp(tk.Tk):
         logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
         # Log the configuration
-        logging.info("Configuration loaded: %s", self.config['form'])
+        #logging.info("Configuration loaded: %s", self.config['form'])
 
         self.title(self.config.get("title", "Form Application"))
         self.create_form_fields()
@@ -84,9 +84,11 @@ class FormApp(tk.Tk):
         try:
             if self.args.dbtype == "sqlite":
                 conn = sqlite3.connect(self.args.connection)
+                placeholder = "?"
             elif self.args.dbtype == "mysql":
                 conn = mysql.connector.connect(host=self.args.host, user=self.args.user,
                                             password=self.args.password, database=self.args.database)
+                placeholder = "%s"
             else:
                 logging.error("Unsupported database type")
                 messagebox.showerror("Error", "Unsupported database type")
@@ -100,10 +102,15 @@ class FormApp(tk.Tk):
             columns_str = ', '.join(columns)
             # Add ' single quotes around each item in data
             for i in range(len(data)):
-                data[i] = f"'{data[i]}'"
+                # only do this if the data is of a varchar type.
+                if self.config['form']["columns"][i]["type"] == "VARCHAR":
+                    data[i] = f"'{data[i]}'"
+                # Also do the ones that are DATETIME
+                if self.config['form']["columns"][i]["type"] == "DATETIME":
+                    data[i] = f"'{data[i]}'"
 
-            data_str = ', '.join(data)
-            sql = f"INSERT INTO tablename ({columns_str}) VALUES ({data_str})"
+            placeholder_str = ', '.join([placeholder for _ in data])
+            sql = f"INSERT INTO tablename ({columns_str}) VALUES ({placeholder_str})"
             # log the sql to debug
             logging.debug("SQL Query: %s", sql)
 
